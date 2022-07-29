@@ -617,8 +617,11 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 */
 	protected void prepareRefresh() {
 		// Switch to active.
+		//设置容器启动时间为当前系统时间
 		this.startupDate = System.currentTimeMillis();
+		//设置容器的关闭状态为false
 		this.closed.set(false);
+		//设置容器的激活状态为true
 		this.active.set(true);
 
 		if (logger.isDebugEnabled()) {
@@ -631,6 +634,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		}
 
 		// Initialize any placeholder property sources in the context environment.
+		//初始化属性资源，比如placeholder,留给子类实现
 		initPropertySources();
 
 		// Validate that all properties marked as required are resolvable:
